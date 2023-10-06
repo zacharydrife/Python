@@ -93,7 +93,7 @@ es = EarlyStopping(monitor='val_auc', mode='min', verbose=1, patience=20)
 
 print("\nTraining model...")
 # fit the model with 10 ephochs and early stopping
-history =model.fit(
+history = model.fit(
         training_iterator,
         steps_per_epoch=training_iterator.samples/BATCH_SIZE, epochs=5,
         validation_data=validation_iterator,
@@ -133,7 +133,7 @@ class_labels = list(validation_iterator.class_indices.keys())
 report = classification_report(true_classes, predicted_classes, target_names=class_labels)
 print(report)   
 
-cm=confusion_matrix(true_classes,predicted_classes)
+cm = confusion_matrix(true_classes,predicted_classes)
 print(cm)
 
 
