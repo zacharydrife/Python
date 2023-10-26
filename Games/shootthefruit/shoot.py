@@ -7,12 +7,21 @@ apple = Actor("apple")
 pineapple = Actor("pineapple")
 orange = Actor("orange")
 
+time_left = 10
+
 def draw():
     screen.clear()
+    screen.draw.text("Time left: " + str(time_left), (10, 10))
     apple.draw()
     pineapple.draw()
     orange.draw()
 
+def countdown():
+    global time_left
+    time_left -= 1
+    if time_left == 0:
+        print("Game over!")
+        quit()
 
 def place_apple():
     apple.x = randint(10, 800)
@@ -44,5 +53,8 @@ def on_mouse_down(pos):
 place_apple()
 place_pineapple()
 place_orange()
+
+clock.schedule_interval(countdown, 1)
+
 
 pgzrun.go()
